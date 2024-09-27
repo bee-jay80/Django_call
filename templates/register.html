@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Register</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>Registration</h2>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-box">
+                {{form.first_name}}
+            </div>
+            <div class="input-box">
+                {{form.last_name}}
+            </div>
+            <div class="input-box">
+                {{form.email}}
+            </div>
+            <div class="input-box">
+                {{form.password1}}
+            </div>
+            <div class="input-box">
+                {{form.password2}}
+            </div>
+            <br><br>
+            <div class="input-box button">
+                <input type="Submit" value="Register">
+            </div>
+            <center>
+                {% if error%}
+                <p style="color: red;">{{error}}</p>
+                {% endif %}
+            </center>
+            <div class="text">
+                <h3>Already have an account? <a href="{% url 'login' %}">Login now</a></h3>
+            </div>
+        </form>
+    </div>
+</body>
+    <script>
+        document.getElementById("firstname").focus()
+    </script>
+</html>

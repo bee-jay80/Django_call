@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Login
+        </div>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <input type="email" name="email" required id="email">
+                <label>Email Address</label>
+            </div>
+            <div class="field">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <br><br>
+            {{success}}
+            <div class="field">
+                <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+                Dont have an account? <a href="{% url 'register' %}">Signup now</a>
+            </div>
+        </form>
+    </div>
+</body>
+   <script>
+    document.getElementById("email").focus()
+   </script>
+</html>
